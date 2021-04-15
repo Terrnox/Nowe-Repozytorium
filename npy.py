@@ -16,9 +16,6 @@ twb_P = 'D'
 wwb_L = 0
 wwb_P = 1
 
-x0=1
-xp=2
-n=5
 
 def GenTabGeo(x0,xp,n):
    tem = (xp - x0)/(n-1)
@@ -29,15 +26,19 @@ def GenTabGeo(x0,xp,n):
               [i, i*tem+x0],])
    TabGeo = np.delete(TabGeo,1,0)
    return TabGeo
+  
 
-print(GenTabGeo(x0,xp,n))
-
-
-def GeoShow(TabGeo):
-   np.array(TabGeo)
-   np.array(TabGeo)
-   plt.plot()
+def GeoShow(TabGeo,n):
+   x=TabGeo[:,1]
+   y=np.zeros((n,1))
+   plt.plot(x,y)
    plt.show()
-    
+
+x0=1
+xp=2
+n=5
+
+TabGeo = GenTabGeo(x0,xp,n) 
+GeoShow(TabGeo,n)   
 #def AloMem(n):
 #    return A,b
