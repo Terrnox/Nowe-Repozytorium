@@ -2,48 +2,30 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-def GenTabGeo(x0,xp,n):
-   tem = (xp - x0)/(n-1)
-   TabGeo = np.array([0,0 *tem+x0])
-   for i in range(n): 
-          TabGeo = np.block([
-              [TabGeo],
-              [i, i*tem+x0],])
-   TabGeo = np.delete(TabGeo,1,0)
-   return TabGeo
 
-def GeoShow(TabGeo,n):
-   
-   x = np.zeros((n,1))
-   points = TabGeo[:,1]
-   fig = plt.figure()
-   ax = fig.add_subplot()
-   ax.plot(points,x,'|',points,x)
-   # Wezel poczatkowy
-   ax.text(0,-0.005,'x0')
-   # Wezel koncowy
-   ax.text(1,-0.005,'xp')
-   # Numery globalne wezlow
-   ax.text(0,-0.015,'1',color='green')
-   ax.text(0.25,-0.015,'5',color='green')
-   ax.text(0.5,-0.015,'2',color='green')
-   ax.text(0.75,-0.015,'3',color='green')
-   ax.text(1,-0.015,'4',color='green')
-   # Elementy
-   ax.text(0.125,0.015,'1',color='blue')
-   ax.text(0.375,0.015,'3',color='blue')
-   ax.text(0.625,0.015,'2',color='blue')
-   ax.text(0.875,0.015,'4',color='blue')
-   #
-   ax.text(0.01,0.005,'1',color='red')
-   ax.text(0.20,0.005,'2',color='red')
-   ax.text(0.27,0.005,'1',color='red')
-   ax.text(0.45,0.005,'2',color='red')
-   ax.text(0.52,0.005,'1',color='red')
-   ax.text(0.70,0.005,'2',color='red')
-   ax.text(0.77,0.005,'1',color='red')
-   ax.text(0.99,0.005,'2',color='red')
-   plt.show()
+def GenTabGeo(x0,xp,n):
+    
+    val = (xp - x0)/(n-1)
+    T1 = np.array([x0])
+    
+    for ind_T1 in range (1,n-1,1):
+        T1 = np.block([T1, ind_T1, ind_T1 + val + x0])
+        
+    T2 = np.zeros((n-1,2))
+    
+    for ind_T2 in range (0,n-1,1):
+        T2[ind_T2][0] = ind_T2 + 1
+        T2[ind_T2][1] = ind_T2 + 2
+        
+    return ind_T1,T1,T2
+
+def GeoShow(T1,T2,n):
+    T = np.zeros((n))
+    plt.plot(T1,T)
+    for i in range(0,n,1):
+        plt.text(T1[i],-0.01, str(i+1))
+        plt.text(T1[i],0,'|')
+        plt.text(T1[i]/2+T1[i]/2, 0.005,str(i+1))
 
 #def AloMem(n):
 #    return A,b
@@ -65,8 +47,9 @@ wwb_P = 1
 
 x0=0
 xp=1
-n=5
+n=100
 
-TabGeo = GenTabGeo(x0,xp,n) 
-GeoShow(TabGeo,n) 
+Nodes, T1, T2 = GenTabGeo(0, 1, 4)
+GeoShow(T1,T2,Nodes+1)
+ 
   
