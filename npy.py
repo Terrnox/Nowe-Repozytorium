@@ -32,20 +32,12 @@ def GenTabGeo(x0,xp,n):
 
 print(GenTabGeo(x0,xp,n))
 
-def generujTabliceGeometrii(x_0, x_p, n):
-    temp = (x_p - x_0) / (n - 1)
-    matrix = np.array([x_0])
 
-    for i in range(1, n, 1):
-        matrix = np.block([matrix, i * temp + x_0])
-    return matrix
-
-print(generujTabliceGeometrii(1,2,5))
-#def GeoShow(TabGeo):
-#   np.array(TabGeo)
-#   np.array(TabGeo)
-#   plt.plot()
-#   plt.show()
+def GeoShow(TabGeo):
+   np.array(TabGeo)
+   np.array(TabGeo)
+   plt.plot()
+   plt.show()
     
 #def AloMem(n):
 #    return A,b
