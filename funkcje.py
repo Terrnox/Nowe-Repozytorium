@@ -51,3 +51,18 @@ def rysuj_geometrie(WEZLY, ELEMENTY, WAR_BRZEGOWE):
 
     plt.grid()
     plt.show()
+    
+def funkcje_bazowe(n):
+    if n==0:
+        f = lambda x: x*0 + 1
+        df = lambda x: x*0
+    elif n==1:
+        f = (lambda x: -1/2*x+1/2, lambda x: 1/2*x+1/2)
+        df = (lambda x: -1/2+x*0, lambda x: 1/2+x*0)
+    else:
+        raise Exception("Nioebsulgiwany wielomian")
+    return f,df
+
+def elementy_macierzy(dphi1,dphi2,c,phi1,phi2):
+    Aij = lambda -dph1(x)*dphi2(x)+ c *phi1(x)*phi2(x)
+    return Aij
