@@ -55,13 +55,13 @@ for ee in range(np.arrange(0,liczbaElementow)):
     
     n = 0 
     m = 0
-    Ml[0,0]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
+    Ml[n,m]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
     n = 0 
     m = 1
-    Ml[0,1]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
+    Ml[n,m]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
     n = 1
     m = 0
-    Ml[0,0]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
+    Ml[n,m]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
     n = 1 
     m = 1
-    Ml[0,0]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
+    Ml[n,m]=J*spint.quad(ElMat(dphi[n],dphi[m],c,phi[n],phi[m]),-1,1)
